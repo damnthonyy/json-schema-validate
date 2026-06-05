@@ -31,8 +31,6 @@ export async function analyzeWithSpectral(spec: unknown): Promise<ValidationIssu
       if (rulesetYaml && typeof rulesetYaml === 'object') {
         if ('rules' in rulesetYaml && rulesetYaml.rules) {
           rulesetDef.rules = (rulesetYaml as any).rules;
-          const customRuleCount = Object.keys((rulesetYaml as any).rules).length;
-          console.log(`✓ Loaded ${customRuleCount} custom rule(s)`);
         }
       }
     } catch (readErr) {
@@ -45,16 +43,8 @@ export async function analyzeWithSpectral(spec: unknown): Promise<ValidationIssu
     const diagnostics = await spectral.run(specString);
     const spectralIssues = formatSpectralResults(diagnostics);
     issues.push(...spectralIssues);
-
-    if (diagnostics.length > 0) {
-      console.log(`Spectral: ${diagnostics.length} issue(s) found`);
-    } else {
-      console.log('Spectral: validation passed');
-    }
   } catch (err) {
-    const errorMsg = err instanceof Error ? err.message : String(err);
-    console.error('Spectral error:', errorMsg);
-    // Continue validation without Spectral results
+    // Silently continue if Spectral fails - validation already caught structural issues
   }
 
   return issues;

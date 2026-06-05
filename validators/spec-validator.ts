@@ -8,13 +8,7 @@ import { extractPathFromError } from './spec-parser';
  * Throws on validation error (caller handles)
  */
 export async function validateSpecStructure(spec: object): Promise<void> {
-  try {
-    await SwaggerParser.validate(spec as any);
-    console.log('Basic validation passed');
-  } catch (err) {
-    console.error('Basic validation failed:', (err as Error).message);
-    throw err;
-  }
+  await SwaggerParser.validate(spec as any);
 }
 
 /**
@@ -25,16 +19,13 @@ export async function detectCircularReferences(spec: object): Promise<Validation
   const issues: ValidationIssue[] = [];
 
   try {
-    console.log('Checking for circular references...');
     await SwaggerParser.dereference(spec as any, {
       dereference: {
         circular: false,
       },
     });
-    console.log('No circular references detected');
   } catch (err) {
     const circularError = err instanceof Error ? err.message : String(err);
-    console.warn('Circular reference detected:', circularError);
 
     const issue: ValidationIssue = {
       path: extractPathFromError(circularError),
@@ -54,16 +45,13 @@ export async function detectCircularReferences(spec: object): Promise<Validation
  */
 export async function dereferenceSpec(spec: object): Promise<unknown> {
   try {
-    console.log('Dereferencing spec (circular refs allowed)...');
     const dereffed = await SwaggerParser.dereference(spec as any, {
       dereference: {
         circular: true,
       },
     });
-    console.log('Dereferenced successfully');
     return dereffed;
   } catch (err) {
-    console.warn('Dereference failed, using original spec');
     return spec;
   }
 }
