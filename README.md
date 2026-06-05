@@ -1,8 +1,8 @@
 # json-schema-validate
 
 [![CI](https://github.com/damnthonyy/json-schema-validate/workflows/CI/badge.svg)](https://github.com/damnthonyy/json-schema-validate/actions?query=workflow%3ACI)
-[![npm version](https://img.shields.io/npm/v/json-schema-validate)](https://www.npmjs.com/package/json-schema-validate)
-[![npm downloads](https://img.shields.io/npm/dm/json-schema-validate)](https://www.npmjs.com/package/json-schema-validate)
+[![npm version](https://img.shields.io/npm/v/@damnthonyy/json-schema-validate)](https://www.npmjs.com/package/@damnthonyy/json-schema-validate)
+[![npm downloads](https://img.shields.io/npm/dm/@damnthonyy/json-schema-validate)](https://www.npmjs.com/package/@damnthonyy/json-schema-validate)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B%2C%2020%2B-brightgreen)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3%2B-blue)](https://www.typescriptlang.org/)
@@ -22,13 +22,13 @@ A lightweight OpenAPI and JSON Schema validator that combines **swagger-parser**
 ## Installation
 
 ```bash
-npm install json-schema-validate
+npm install @damnthonyy/json-schema-validate
 ```
 
 ## Usage
 
 ```typescript
-import { validateSchema } from 'json-schema-validate';
+import { validateSchema } from '@damnthonyy/json-schema-validate';
 
 const spec = {
   openapi: '3.0.0',
