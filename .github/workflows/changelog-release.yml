@@ -1,4 +1,4 @@
-name: Create Release from Changelog
+name: Create Release
 
 on:
   push:
@@ -14,21 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Extract version from tag
-        id: version
-        run: echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
-
-      - name: Extract changelog section
-        id: changelog
-        run: |
-          VERSION="${{ steps.version.outputs.version }}"
-          # Extract version section from CHANGELOG.md
-          awk "/## \[$VERSION\]/,/## \[/" CHANGELOG.md | sed '$d' > release_notes.md
-          cat release_notes.md
-
       - name: Create Release
-        uses: ncipollo/release-action@v1
+        uses: softprops/action-gh-release@v1
         with:
-          tag: ${{ steps.version.outputs.version }}
-          bodyFile: release_notes.md
-          token: ${{ secrets.GITHUB_TOKEN }}
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
