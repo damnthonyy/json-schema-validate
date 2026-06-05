@@ -27,8 +27,14 @@ jobs:
       - name: Run tests
         run: npm run test:run
 
-      - name: Setup npm credentials
+      - name: Setup npm credentials (npm.org)
         run: npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
 
-      - name: Publish to npm
-        run: npm publish --access public
+      - name: Setup npm credentials (GitHub Packages)
+        run: npm config set //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to npm.org
+        run: npm publish --registry https://registry.npmjs.org/
+
+      - name: Publish to GitHub Packages
+        run: npm publish --registry https://npm.pkg.github.com
