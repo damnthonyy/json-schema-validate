@@ -1,0 +1,21 @@
+extends:
+  - spectral:oas
+
+rules:
+  no-empty-description:
+    description: Descriptions must not be empty
+    given: "$..description"
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: ".+"
+
+  no-missing-type:
+    description: Schema must define a type
+    given: "$.components.schemas.*"
+    severity: warn
+    then:
+      function: truthy
+      functionOptions:
+        value: "type"

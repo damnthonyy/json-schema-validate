@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "index.export.ts",
+    "core/**/*.ts",
+    "validators/**/*.ts",
+    "shared/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "test/**",
+    "vitest.config.ts",
+    "index.ts",
+    "controllers/**",
+    "routes/**",
+    "config/**",
+    "scripts/**"
+  ]
+}

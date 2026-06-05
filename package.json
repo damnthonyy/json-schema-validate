@@ -1,0 +1,73 @@
+{
+  "name": "json-schema-validate",
+  "version": "1.0.0",
+  "description": "JSON Schema and OpenAPI validator using Spectral and swagger-parser",
+  "main": "dist/index.export.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.export.js",
+      "require": "./dist/index.export.js",
+      "types": "./dist/index.export.d.ts"
+    },
+    "./validator": {
+      "import": "./dist/validators/openapi-schema.validator.js",
+      "require": "./dist/validators/openapi-schema.validator.js",
+      "types": "./dist/validators/openapi-schema.validator.d.ts"
+    }
+  },
+  "types": "dist/index.export.d.ts",
+  "files": [
+    "dist",
+    "rules",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/damnthonyy/json-schema-validate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/damnthonyy/json-schema-validate/issues"
+  },
+  "homepage": "https://github.com/damnthonyy/json-schema-validate#readme",
+  "scripts": {
+    "dev": "ts-node index.ts",
+    "build": "tsc -p tsconfig.build.json && npm run copy-assets",
+    "start": "node dist/index.js",
+    "copy-assets": "mkdir -p dist/rules && cp rules/*.yaml dist/rules/",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "prepublishOnly": "npm run build && npm run test:run"
+  },
+  "keywords": ["json-schema", "openapi", "spectral", "validation", "oas2", "oas3", "oas3.1", "typescript"],
+  "author": {
+      "name": "Antoine Mahassadi",
+      "email": "dmantoinepro@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@apidevtools/swagger-parser": "^10.1.0",
+    "@stoplight/spectral-core": "^1.18.3",
+    "@stoplight/spectral-formats": "^1.5.0",
+    "@stoplight/spectral-rulesets": "^1.16.0",
+    "@stoplight/spectral-parsers": "^1.0.3",
+    "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.6",
+    "@types/lodash": "^4.14.201",
+    "@types/js-yaml": "^4.0.9",
+    "@types/swagger-ui-express": "^4.1.6",
+    "express": "^4.18.2",
+    "swagger-ui-express": "^5.0.0",
+    "swagger-jsdoc": "^6.2.8",
+    "vitest": "^1.1.0",
+    "@vitest/ui": "^1.1.0"
+  }
+}
