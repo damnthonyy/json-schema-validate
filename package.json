@@ -1,6 +1,6 @@
 {
   "name": "json-schema-validate",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "JSON Schema and OpenAPI validator using Spectral and swagger-parser",
   "main": "dist/index.export.js",
   "exports": {
