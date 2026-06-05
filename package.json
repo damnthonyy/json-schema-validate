@@ -1,6 +1,6 @@
 {
   "name": "json-schema-validate",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "JSON Schema and OpenAPI validator using Spectral and swagger-parser",
   "main": "dist/index.export.js",
   "exports": {
@@ -41,10 +41,19 @@
     "test:run": "vitest run",
     "prepublishOnly": "npm run build && npm run test:run"
   },
-  "keywords": ["json-schema", "openapi", "spectral", "validation", "oas2", "oas3", "oas3.1", "typescript"],
+  "keywords": [
+    "json-schema",
+    "openapi",
+    "spectral",
+    "validation",
+    "oas2",
+    "oas3",
+    "oas3.1",
+    "typescript"
+  ],
   "author": {
-      "name": "Antoine Mahassadi",
-      "email": "dmantoinepro@gmail.com"
+    "name": "Antoine Mahassadi",
+    "email": "dmantoinepro@gmail.com"
   },
   "license": "MIT",
   "dependencies": {
